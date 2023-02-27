@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+p {
+  margin: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.moviesList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flip-card {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  width: 200px;
+  height: 400px;
+  margin: 30px 30px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  perspective: 1000px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.flip-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.flip-card-inner .flip-card-front .container {
+  padding: 2px 16px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  /* text-align: center; */
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  color: black;
+}
+
+.flip-card-back {
+  /* background-color: #2980b9; */
+  display: flex;
+  flex-direction: column;
+  /* color: white; */
+  transform: rotateY(180deg);
+}
+.title-content, .info {
+  display: flex;
+}
+.title-content  {
+  padding: 6px;
+  flex-direction: row;
+}
+.title-content .title-rating {
+  margin-left: 10px;
+}
+.info {
+  flex-direction: column;
+  padding: 10px;
+}
+
+.info p {
+  text-indent: 20px;
+  font-size: 13px;
+}
+.description p {
+  display: -webkit-box;
+  /* max-width: 200px; */
+  -webkit-line-clamp: 11;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .flip-card {
+    margin: 15px;
+    width: 100%;
+    height: 150px;
+  }
+  .flip-card-front {
+    display: flex;
+    
+  }
+  .flip-card-front img{
+    width: 100px;
+    height: 150px;
+  }
+  .flip-card-back {
+    display: none;
+  }
+  .flip-card:hover {
+    height: 550px;
+  }
+  .flip-card:hover .flip-card-inner {
+    transform:none;
+  }
+  .flip-card:hover .flip-card-back {
+      display: block;
+      position: absolute;
+      top: 156px;
+      width: 100%;
+      height: 100%;
+      transform: none;
+  }
+  .info p {
+    font-size: 15px;
+  }
+}
